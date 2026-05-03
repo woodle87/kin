@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Offroad Vehicle Test Lab</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/",
+        "three/addons/controls/OrbitControls": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/controls/OrbitControls.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- Canvas para Three.js -->
+  <canvas id="webgl-canvas"></canvas>
+
+  <!-- HUD Overlay -->
+  <div class="hud-container">
+    <div class="hud-header">
+      <h1>[ OVTL ]</h1>
+      <h2>OFFROAD VEHICLE TEST LAB</h2>
+      
+      <div class="car-selector-container">
+        <label for="car-selector">VEHICLE:</label>
+        <select id="car-selector" class="neon-input">
+          <option value="ambulance.glb">Ambulance</option>
+          <option value="delivery.glb">Delivery</option>
+          <option value="firetruck.glb">Firetruck</option>
+          <option value="police.glb">Police</option>
+          <option value="sedan.glb">Sedan</option>
+          <option value="suv.glb">SUV</option>
+          <option value="taxi.glb">Taxi</option>
+          <option value="tractor-police.glb">Tractor Police</option>
+          <option value="tractor.glb">Tractor</option>
+          <option value="truck.glb">Truck</option>
+          <option value="van.glb">Van</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="hud-telemetry">
+      <div class="telemetry-bar">
+        <span class="label">SPEED</span>
+        <span class="value" id="hud-speed">0 <small>km/h</small></span>
+      </div>
+      <div class="telemetry-bar">
+        <span class="label">GEAR</span>
+        <span class="value" id="hud-gear">N</span>
+      </div>
+      <div class="telemetry-bar">
+        <span class="label">SUSP LOAD</span>
+        <div class="progress-bar"><div class="progress-fill" id="hud-suspension"></div></div>
+      </div>
+      <div class="telemetry-bar">
+        <span class="label">CAMERA</span>
+        <span class="value" id="hud-camera">CHASE</span>
+      </div>
+      <div class="telemetry-bar">
+        <span class="label">STABILITY</span>
+        <span class="value" id="hud-stability">0°</span>
+      </div>
+      <div class="telemetry-bar">
+        <span class="label">SESSION</span>
+        <span class="value" id="hud-timer">00:00</span>
+      </div>
+    </div>
+
+    <div class="hud-controls">
+      <h3>CONTROLS</h3>
+      <ul>
+        <li><b>W/S/A/D</b> - Drive</li>
+        <li><b>SPACE</b> - Handbrake</li>
+        <li><b>SHIFT</b> - Boost</li>
+        <li><b>C</b> - Change Camera</li>
+        <li><b>R</b> - Reset Vehicle</li>
+        <li><b>T</b> - Teleport to zones</li>
+      </ul>
+    </div>
+
+    <!-- Mini map / Zone indicator -->
+    <div class="hud-zone">
+      <span class="label">TEST ZONE:</span>
+      <span class="value neon-text" id="hud-zone">MAIN TRACK</span>
+    </div>
+  </div>
+
+  <div class="loading-screen" id="loading-screen">
+    <div class="spinner"></div>
+    <h2>INITIALIZING SIMULATION...</h2>
+  </div>
+
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
